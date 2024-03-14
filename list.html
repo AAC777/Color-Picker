@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <title>List</title>
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="content">
+        <div>
+            <label for="item">Item</label>
+            <input type="text" id="item" name="first_name">
+        </div>
+        <div>
+            <button name="sayHello">Add Item</button>
+        </div>
+        <div id="list">
+        </div>
+    </div>
+</div>
+<script>
+    const firstName = document.getElementById('item');
+    const hello = document.querySelector('[name="sayHello"]');
+    const list = document.getElementById('list')
 
+    hello.addEventListener('click',function(e){
+        let first = firstName.value;
+        let full = `${first}`;
+        let item = document.createElement('li');
+        item.addEventListener('click', function(e){
+            item.remove();
+        });
+
+        item.innerText = full;
+        list.insertAdjacentElement('afterend',item);
+        firstName.value = "";
+    });
+
+</script>
 </body>
 </html>
