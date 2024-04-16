@@ -28,13 +28,11 @@
   const hello = document.querySelector('[name="sayHello"]');
   const list = document.getElementById('list')
 
-
   hello.addEventListener('click',function (e){
     let first = firstName.value;
     let last = lastName.value;
     let full= `Hello ${first} ${last}`;
     let item = document.createElement('p');
-
 
     item.innerText = full;
     list.insertAdjacentElement('afterend',item);
