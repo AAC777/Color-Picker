@@ -58,39 +58,38 @@
     })
 
     function addItemToIncompleteTable(toDoItem) {
-        let newRow = document.createElement('tr');
-        let descriptionTag = document.createElement('td');
-        descriptionTag.textContent = toDoItem;
-        newRow.appendChild(descriptionTag);
-        let actionTag = document.createElement('td');
-        let action  = document.createElement('button');
-        action.textContent = "Mark Complete";
-        action.addEventListener('click', function(){
-            newRow.remove();
-            addItemToCompleteTable(toDoItem);
-        })
-        actionTag.appendChild(action);
-        newRow.appendChild(actionTag);
-        incomplete.appendChild(newRow);
+        addItem(toDoItem, false)
     }
 
     function addItemToCompleteTable (toDoItem) {
+        addItem(toDoItem, true)
+    }
+    function addItem(toDoItem, isComplete) {
         let newRow = document.createElement('tr');
         let descriptionTag = document.createElement('td');
         descriptionTag.textContent = toDoItem;
         newRow.appendChild(descriptionTag);
         let actionTag = document.createElement('td');
         let action  = document.createElement('button');
-        action.textContent = "Mark Incomplete";
-        action.addEventListener('click', function(){
-            newRow.remove();
-            addItemToIncompleteTable(toDoItem);
-        })
         actionTag.appendChild(action);
         newRow.appendChild(actionTag);
-        complete.appendChild(newRow);
+        if(isComplete){
+            action.textContent = "Mark Incomplete";
+            action.addEventListener('click', function(){
+                newRow.remove();
+                addItemToIncompleteTable(toDoItem);
+            })
+            incomplete.appendChild(newRow);
+        } else {
+            action.textContent = "Mark Complete";
+            action.addEventListener('click', function(){
+                newRow.remove();
+                addItemToCompleteTable(toDoItem);
+            })
+            complete.appendChild(newRow);
+        }
     }
-
+    
 </script>
 </body>
 </html>
