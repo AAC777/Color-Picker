@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <button id="trigger">Click Me!</button>
+        <div id="new">
+            <button id="colorChanger">Change Background</button>
+        </div>
+        <button id="stop">Stop</button>
+    </div>
+</div>
+<script>
+    const color = ['orange', 'green', 'blue', 'red', 'grey'];
+    const myButton = document.getElementById("trigger");
+    const colorBackground = document.getElementById("colorChanger");
+    const newColor = document.getElementById("new");
+    const stop = document.getElementById("stop");
+    let interval;
+    function randamize(){
+        return color[Math.floor(Math.random() * color.length)]
+    }
+    myButton.addEventListener('click', function(){
+        setTimeout(function(){
+            myButton.remove()
+        }, 3000);
+    });
+    colorBackground.addEventListener('click', function(){
+        interval = setInterval(function(){
+            newColor.style.backgroundColor = randamize();
+        }, 5000);
+    });
+    stop.addEventListener('click', function(){
+        if(interval){
+            clearInterval(interval);
+            interval = null;
+        }
+    })
+
+</script>
+</body>
+</html>
